@@ -13,7 +13,8 @@ boolean game2=true;// only applies to multiplayer
 //colour
 int c1=50;
 int c2=50;
-
+// random ai
+float r= 0;
 
 
 void setup () {
@@ -28,7 +29,6 @@ void setup () {
   pp = loadImage ("Gerald-G-Parchment-Background-or-Border-1.png");
 }
 void draw () {
-
   // menu
   background (200, 100, 300);
   fill (100, c1, 100);
@@ -55,8 +55,35 @@ void draw () {
   if (!allGame) {
     if (!game1) {
       background (100, 100, 100);
+      if (keyPressed) {
+        if (key=='1'||key=='2'||key=='3') {
+          {
+            r= random(3);
+          }
+        } else {
+          r=0;
+        }
+        if (r<=3&&r>2) {
+          image(rk, 500, 0);
+        }
+        if (r<=2&&r>1) {
+          image(pp, 500, 100);
+        }
+        if (r<=1&&r>0) {
+          image(sc, 500, 100);
+        }
+      }
     } else if (!game2) {
       background (0, 100, 100);
+      if (keyPressed&&key=='4') {
+        image(rk, 500, 0);
+      }
+      if (keyPressed&&key=='5') {
+        image(pp, 500, 100);
+      }
+      if (keyPressed&&key=='6') {
+        image(sc, 500, 100);
+      }
     }
     if (keyPressed&&key=='1') {
       image(rk, 100, 0);
@@ -68,14 +95,23 @@ void draw () {
       image(sc, 0, 100);
     }
   }
-}
-void keyReleased () {
-  if (!allGame) {
-    if (key=='3') {
-      image(sc, 0, 100);
+  if (keyPressed&&key=='r') {
+    if (allGame) {
+      allGame=false;
+      game1=false;
+      game2=false;
+    }
+    if (game1) {
+      allGame=false;
+      game1=false;
+    if (game2) {
+      allGame=false;
+      game2=false;
     }
   }
 }
+
+
 void mouseClicked() {
   // game1 selected
   if (mouseX>100&&mouseY>150&&mouseX<400&&mouseY<550)
