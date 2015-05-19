@@ -6,6 +6,7 @@
 PImage sc;
 PImage rk;
 PImage pp;
+PImage sc2;
 // game types
 boolean allGame=true;// applies to either mode
 boolean game1=true;// only applies to single player
@@ -15,6 +16,10 @@ int c1=50;
 int c2=50;
 // random ai
 float r= 0;
+int m=millis();
+int interval= 1000;
+float time=0;
+int j=0;
 
 
 void setup () {
@@ -27,6 +32,7 @@ void setup () {
   sc = loadImage ("hasami.png");
   rk = loadImage ("alpine-landscape-cone-top-rock-01b-al1.png");
   pp = loadImage ("Gerald-G-Parchment-Background-or-Border-1.png");
+  sc2 = loadImage ("hasami copy.png");
 }
 void draw () {
   // menu
@@ -58,10 +64,21 @@ void draw () {
       if (keyPressed) {
         if (key=='1'||key=='2'||key=='3') {
           {
-            r= random(3);
+            if (millis() - m > interval)
+            {
+              time++;
+              m = millis();
+            }
+            if (time==1) {
+              r=random(3);
+              time=1;
+            } else {
+              time=0;
+            }
           }
         } else {
           r=0;
+          time=0;
         }
         if (r<=3&&r>2) {
           image(rk, 500, 0);
@@ -70,7 +87,7 @@ void draw () {
           image(pp, 500, 100);
         }
         if (r<=1&&r>0) {
-          image(sc, 500, 100);
+          image(sc2, 500, 100);
         }
       }
     } else if (!game2) {
@@ -82,7 +99,7 @@ void draw () {
         image(pp, 500, 100);
       }
       if (keyPressed&&key=='6') {
-        image(sc, 500, 100);
+        image(sc2, 500, 100);
       }
     }
     if (keyPressed&&key=='1') {
@@ -95,23 +112,32 @@ void draw () {
       image(sc, 0, 100);
     }
   }
-  if (keyPressed&&key=='r') {
-    if (allGame) {
-      allGame=false;
-      game1=false;
-      game2=false;
-    }
-    if (game1) {
-      allGame=false;
-      game1=false;
-    if (game2) {
-      allGame=false;
-      game2=false;
+  // if (keyPressed&&key=='r') {
+  //   if (allGame) {
+  //     allGame=false;
+  //     game1=false;
+  //     game2=false;
+  //   }
+  //   if (game1) {
+  //     allGame=false;
+  //     game1=false;
+  // }
+  //   if (game2) {
+  //     allGame=false;
+  //     game2=false;
+  //   }
+  // }
+}
+
+void keyReleased() {
+  if (allGame) {
+    if (keyPressed) {
+      if (key==1) {
+        image (rk, 100, 0);
+      }
     }
   }
 }
-
-
 void mouseClicked() {
   // game1 selected
   if (mouseX>100&&mouseY>150&&mouseX<400&&mouseY<550)
