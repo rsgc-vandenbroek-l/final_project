@@ -43,8 +43,8 @@ void setup () {
 }
 void draw () {
   // menu
-  background (200, 100, 300);
-  fill (100, c1, 100);
+  background (200, 100, 100);
+  fill (50, c1, 100);
   if (mouseX>100&&mouseY>150&&mouseX<400&&mouseY<550) {
     c1=100;
   } else {
@@ -56,7 +56,7 @@ void draw () {
     c2=50;
   }
   rect(100, 150, 300, 300);
-  fill(0, c2, 100);
+  fill(300, c2, 100);
   rect (600, 150, 300, 300);
   textSize(50);
   fill (0);
@@ -67,7 +67,7 @@ void draw () {
 
   if (!allGame) {
     if (!game1) {
-      background (100, 100, 100);
+      background (50, 100, 100);
       if (keyPressed) {
         if (key=='1'||key=='2'||key=='3') {
           {
@@ -107,42 +107,50 @@ void draw () {
       if (keyPressed&&key=='3') {
         image(sc, 0, 100);
       }
-      fill (360);
       if (keyPressed&&key=='1') {
         if (r<=3&&r>2&&time==0) {
+          fill (360);
           text ("TIE!", 350, 300);
         }
         if (r<=2&&r>1&&time==0) {
+          fill (0, 100, 100);
           text ("YOU LOSE!", 150, 300);
         }
         if (r<=1&&r>0&&time==0) {
+          fill (100, 100, 100);
           text ("YOU WIN!", 150, 300);
         }
       }
       if (keyPressed&&key=='2') {
         if (r<=3&&r>2&&time==0) {
+          fill (100, 100, 100);
           text ("YOU WIN!", 150, 300);
         }
         if (r<=2&&r>1&&time==0) {
+          fill (360);
           text ("TIE!", 350, 300);
         }
         if (r<=1&&r>0&&time==0) {
+          fill (0, 100, 100);
           text ("YOU LOSE!", 150, 300);
         }
       }    
       if (keyPressed&&key=='3') {
         if (r<=3&&r>2&&time==0) {
+          fill (0, 100, 100);
           text ("YOU LOSE!", 150, 300);
         }
         if (r<=2&&r>1&&time==0) {
+          fill (100, 100, 100);
           text ("YOU WIN!", 150, 300);
         }
         if (r<=1&&r>0&&time==0) {
+          fill (360);
           text ("TIE!", 350, 300);
         }
       }
     } else if (!game2) {
-      background (0, 100, 100);
+      background (300, 100, 100);
       if (keyPressed&&key=='1') {
         mprk1=1;
         //image(rk, 600, 0);
@@ -170,67 +178,68 @@ void draw () {
       if (mprk1==1&&mprk2==1) {
         image(rk, 100, 0);
         image(rk, 600, 0);
+        fill (360);
+        text ("TIE!", 350, 300);
       }
       if (mprk1==1&&mppp2==1) {
         image(rk, 100, 0);
         image(pp, 500, 100);
+        fill (200,100,100);
+        text ("P2 WINS!", 150, 300);
       }
       if (mprk1==1&&mpsc2==1) {
         image(rk, 100, 0);
         image(sc2, 500, 100);
+        fill (30,100,100);
+        text ("P1 WINS!", 150, 300);
       }
       if (mppp1==1&&mprk2==1) {
         image (pp, 100, 100);
         image (rk, 600, 0);
+        fill (30,100,100);
+        text ("P1 WINS!", 150, 300);
       }
       if (mppp1==1&&mppp2==1) {
         image (pp, 100, 100);
         image (pp, 500, 100);
+        fill (360);
+        text ("TIE!", 350, 300);
       }
       if (mppp1==1&&mpsc2==1) {
         image (pp, 100, 100);
         image (sc2, 500, 100);
+        fill (200,100,100);
+        text ("P2 WINS!", 150, 300);
       }
       if (mpsc1==1&&mprk2==1) {
         image (sc, 0, 100);
-        image (rk, 500, 100);
+        image (rk, 600, 0);
+        fill (200,100,100);
+        text ("P2 WINS!", 150, 300);
       }
       if (mpsc1==1&&mppp2==1) {
         image (sc, 0, 100);
         image (pp, 500, 100);
+        fill (30,100,100);
+        text ("P1 WINS!", 150, 300);
       }
       if (mpsc1==1&&mpsc2==1) {
         image (sc, 0, 100);
         image (sc2, 500, 100);
+        fill (360);
+        text ("TIE!", 350, 300);
       }
-      // if (keyPressed) 
-      // {
-      //   {
-      //     mprk1=0;
-      //     mppp1=0;
-      //     mpsc1=0;
-      //     mprk2=0;
-      //     mppp2=0;
-      //     mpsc2=0;
-      //   }
-      // }
+      if (keyPressed&&key!='1'&&key!='2'&&key!='3'&&key!='4'&&key!='5'&&key!='6') 
+      {
+        mprk1=0;
+        mppp1=0;
+        mpsc1=0;
+        mprk2=0;
+        mppp2=0;
+        mpsc2=0;
+      }
     }
   }
-  // if (keyPressed&&key=='r') {
-  //   if (allGame) {
-  //     allGame=false;
-  //     game1=false;
-  //     game2=false;
-  //   }
-  //   if (game1) {
-  //     allGame=false;
-  //     game1=false;
-  // }
-  //   if (game2) {
-  //     allGame=false;
-  //     game2=false;
-  //   }
-  // }
 }
 void keyPressed() {
   if (allGame) {
