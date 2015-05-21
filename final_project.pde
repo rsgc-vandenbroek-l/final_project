@@ -20,6 +20,13 @@ int m=millis();
 int interval= 1000;
 float time=0;
 int j=0;
+// multiplayer variables
+int mprk1=0;
+int mppp1=0;
+int mpsc1=0;
+int mprk2=0;
+int mppp2=0;
+int mpsc2=0;
 
 
 void setup () {
@@ -90,60 +97,123 @@ void draw () {
           image(sc2, 500, 100);
         }
       }
+
+      if (keyPressed&&key=='1') {
+        image(rk, 100, 0);
+      }
+      if (keyPressed&&key=='2') {
+        image(pp, 100, 100);
+      }
+      if (keyPressed&&key=='3') {
+        image(sc, 0, 100);
+      }
+      fill (360);
+      if (keyPressed&&key=='1') {
+        if (r<=3&&r>2&&time==0) {
+          text ("TIE!", 350, 300);
+        }
+        if (r<=2&&r>1&&time==0) {
+          text ("YOU LOSE!", 150, 300);
+        }
+        if (r<=1&&r>0&&time==0) {
+          text ("YOU WIN!", 150, 300);
+        }
+      }
+      if (keyPressed&&key=='2') {
+        if (r<=3&&r>2&&time==0) {
+          text ("YOU WIN!", 150, 300);
+        }
+        if (r<=2&&r>1&&time==0) {
+          text ("TIE!", 350, 300);
+        }
+        if (r<=1&&r>0&&time==0) {
+          text ("YOU LOSE!", 150, 300);
+        }
+      }    
+      if (keyPressed&&key=='3') {
+        if (r<=3&&r>2&&time==0) {
+          text ("YOU LOSE!", 150, 300);
+        }
+        if (r<=2&&r>1&&time==0) {
+          text ("YOU WIN!", 150, 300);
+        }
+        if (r<=1&&r>0&&time==0) {
+          text ("TIE!", 350, 300);
+        }
+      }
     } else if (!game2) {
       background (0, 100, 100);
+      if (keyPressed&&key=='1') {
+        mprk1=1;
+        //image(rk, 600, 0);
+      }
+      if (keyPressed&&key=='2') {
+        //image(pp, 500, 100);
+        mppp1=1;
+      }
+      if (keyPressed&&key=='3') {
+        //image(sc2, 500, 100);
+        mpsc1=1;
+      }
       if (keyPressed&&key=='4') {
-        image(rk, 600, 0);
+        mprk2=1;
+        //image(rk, 600, 0);
       }
       if (keyPressed&&key=='5') {
-        image(pp, 500, 100);
+        //image(pp, 500, 100);
+        mppp2=1;
       }
       if (keyPressed&&key=='6') {
+        //image(sc2, 500, 100);
+        mpsc2=1;
+      }
+      if (mprk1==1&&mprk2==1) {
+        image(rk, 100, 0);
+        image(rk, 600, 0);
+      }
+      if (mprk1==1&&mppp2==1) {
+        image(rk, 100, 0);
+        image(pp, 500, 100);
+      }
+      if (mprk1==1&&mpsc2==1) {
+        image(rk, 100, 0);
         image(sc2, 500, 100);
       }
-    }
-    if (keyPressed&&key=='1') {
-      image(rk, 100, 0);
-    }
-    if (keyPressed&&key=='2') {
-      image(pp, 100, 100);
-    }
-    if (keyPressed&&key=='3') {
-      image(sc, 0, 100);
-    }
-    fill (360);
-    if (keyPressed&&key=='1') {
-      if (r<=3&&r>2&&time==0) {
-        text ("TIE!", 350, 300);
+      if (mppp1==1&&mprk2==1) {
+        image (pp, 100, 100);
+        image (rk, 600, 0);
       }
-      if (r<=2&&r>1&&time==0) {
-        text ("YOU LOSE!", 150, 300);
+      if (mppp1==1&&mppp2==1) {
+        image (pp, 100, 100);
+        image (pp, 500, 100);
       }
-      if (r<=1&&r>0&&time==0) {
-        text ("YOU WIN!", 150, 300);
+      if (mppp1==1&&mpsc2==1) {
+        image (pp, 100, 100);
+        image (sc2, 500, 100);
       }
-    }
-    if (keyPressed&&key=='2') {
-      if (r<=3&&r>2&&time==0) {
-        text ("YOU WIN!", 150, 300);
+      if (mpsc1==1&&mprk2==1) {
+        image (sc, 0, 100);
+        image (rk, 500, 100);
       }
-      if (r<=2&&r>1&&time==0) {
-        text ("TIE!", 350, 300);
+      if (mpsc1==1&&mppp2==1) {
+        image (sc, 0, 100);
+        image (pp, 500, 100);
       }
-      if (r<=1&&r>0&&time==0) {
-        text ("YOU LOSE!", 150, 300);
+      if (mpsc1==1&&mpsc2==1) {
+        image (sc, 0, 100);
+        image (sc2, 500, 100);
       }
-    }    
-    if (keyPressed&&key=='3') {
-      if (r<=3&&r>2&&time==0) {
-        text ("YOU LOSE!", 150, 300);
-      }
-      if (r<=2&&r>1&&time==0) {
-        text ("YOU WIN!", 150, 300);
-      }
-      if (r<=1&&r>0&&time==0) {
-        text ("TIE!", 350, 300);
-      }
+      // if (keyPressed) 
+      // {
+      //   {
+      //     mprk1=0;
+      //     mppp1=0;
+      //     mpsc1=0;
+      //     mprk2=0;
+      //     mppp2=0;
+      //     mpsc2=0;
+      //   }
+      // }
     }
   }
   // if (keyPressed&&key=='r') {
