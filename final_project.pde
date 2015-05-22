@@ -151,29 +151,27 @@ void draw () {
       }
     } else if (!game2) {
       background (300, 100, 100);
-      if (keyPressed&&key=='1') {
-        mprk1=1;
-        //image(rk, 600, 0);
+      if (mprk1==0&&mppp1==0&&mpsc1==0) {
+        if (keyPressed&&key=='1') {
+          mprk1=1;
+        }
+        if (keyPressed&&key=='2') {
+          mppp1=1;
+        }
+        if (keyPressed&&key=='3') {
+          mpsc1=1;
+        }
       }
-      if (keyPressed&&key=='2') {
-        //image(pp, 500, 100);
-        mppp1=1;
-      }
-      if (keyPressed&&key=='3') {
-        //image(sc2, 500, 100);
-        mpsc1=1;
-      }
-      if (keyPressed&&key=='4') {
-        mprk2=1;
-        //image(rk, 600, 0);
-      }
-      if (keyPressed&&key=='5') {
-        //image(pp, 500, 100);
-        mppp2=1;
-      }
-      if (keyPressed&&key=='6') {
-        //image(sc2, 500, 100);
-        mpsc2=1;
+      if (mprk2==0&&mppp2==0&&mpsc2==0) {
+        if (keyPressed&&key=='4') {
+          mprk2=1;
+        }
+        if (keyPressed&&key=='5') {
+          mppp2=1;
+        }
+        if (keyPressed&&key=='6') {
+          mpsc2=1;
+        }
       }
       if (mprk1==1&&mprk2==1) {
         image(rk, 100, 0);
@@ -184,19 +182,19 @@ void draw () {
       if (mprk1==1&&mppp2==1) {
         image(rk, 100, 0);
         image(pp, 500, 100);
-        fill (200,100,100);
+        fill (200, 100, 100);
         text ("P2 WINS!", 150, 300);
       }
       if (mprk1==1&&mpsc2==1) {
         image(rk, 100, 0);
         image(sc2, 500, 100);
-        fill (30,100,100);
+        fill (30, 100, 100);
         text ("P1 WINS!", 150, 300);
       }
       if (mppp1==1&&mprk2==1) {
         image (pp, 100, 100);
         image (rk, 600, 0);
-        fill (30,100,100);
+        fill (30, 100, 100);
         text ("P1 WINS!", 150, 300);
       }
       if (mppp1==1&&mppp2==1) {
@@ -208,19 +206,19 @@ void draw () {
       if (mppp1==1&&mpsc2==1) {
         image (pp, 100, 100);
         image (sc2, 500, 100);
-        fill (200,100,100);
+        fill (200, 100, 100);
         text ("P2 WINS!", 150, 300);
       }
       if (mpsc1==1&&mprk2==1) {
         image (sc, 0, 100);
         image (rk, 600, 0);
-        fill (200,100,100);
+        fill (200, 100, 100);
         text ("P2 WINS!", 150, 300);
       }
       if (mpsc1==1&&mppp2==1) {
         image (sc, 0, 100);
         image (pp, 500, 100);
-        fill (30,100,100);
+        fill (30, 100, 100);
         text ("P1 WINS!", 150, 300);
       }
       if (mpsc1==1&&mpsc2==1) {
